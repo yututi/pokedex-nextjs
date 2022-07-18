@@ -23,13 +23,6 @@ const Layout : React.FC<Props> = (props) => {
 
   const [isOpen, setOpen] = useState(false)
 
-  const router = useRouter()
-
-  const routeWithClose = (path:string) => () => {
-    setOpen(false)
-    router.push(path)
-  }
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -55,20 +48,8 @@ const Layout : React.FC<Props> = (props) => {
         onClose={() => setOpen(false)}
       >
         <List>
-        <ListItem>
-            <ListItemButton onClick={routeWithClose("/")}>
-              <ListItemText>
-                Top
-              </ListItemText>
-            </ListItemButton>
-          </ListItem>
-          <ListItem>
-            <ListItemButton onClick={routeWithClose("/pokemons")}>
-              <ListItemText>
-                Pokemons
-              </ListItemText>
-            </ListItemButton>
-          </ListItem>
+          <ListItemTop onClick={() => setOpen(false)}/>
+          <ListItemPokemon onClick={() => setOpen(false)}/>
         </List>
       </Drawer>
     </Box>
@@ -76,3 +57,47 @@ const Layout : React.FC<Props> = (props) => {
 }
 
 export default Layout
+
+type ListItemProps = {
+  onClick: () => void
+}
+
+const ListItemTop : React.FC<ListItemProps> = ({onClick}) => {
+
+  const router = useRouter()
+
+  const routeWithClose = (path:string) => () => {
+    onClick()
+    router.push(path)
+  }
+
+  return (
+    <ListItem>
+      <ListItemButton onClick={routeWithClose("/")}>
+        <ListItemText>
+          Top
+        </ListItemText>
+      </ListItemButton>
+    </ListItem>
+  )
+}
+
+const ListItemPokemon : React.FC<ListItemProps> = ({onClick}) => {
+
+  const router = useRouter()
+
+  const routeWithClose = (path:string) => () => {
+    onClick()
+    router.push(path)
+  }
+
+  return (
+    <ListItem>
+      <ListItemButton onClick={routeWithClose("/pokemons")}>
+        <ListItemText>
+        Pokemons
+        </ListItemText>
+      </ListItemButton>
+    </ListItem>
+  )
+}

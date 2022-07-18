@@ -10,8 +10,6 @@ const PokemonList = dynamic(() => import("@/components/PokemonList"), { suspense
 
 const Home: NextPage = () => {
 
-  const router = useRouter()
-
   return (
     <Container maxWidth="sm" sx={{ mt: 4, mb: 4 }}>
       <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>

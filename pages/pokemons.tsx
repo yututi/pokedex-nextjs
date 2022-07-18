@@ -1,20 +1,17 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import dynamic from 'next/dynamic'
+import SuspenseOrNotReady from '@/components/SuspenseOrNotReady'
+import PokemonList, {Loading} from "@/components/PokemonList"
+import Container from '@mui/material/Container'
 import { Suspense } from 'react'
-const PokemonList = dynamic(() => import("@/components/PokemonList"), { suspense: true })
 
-const Home: NextPage = () => {
+const Pokemons: NextPage = () => {
   return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <Suspense fallback={"fafds"}>
-          <PokemonList></PokemonList>
-        </Suspense>
-      </main>
-    </div>
+    <Container maxWidth="sm" sx={{ mt: 4, mb: 4 }}>
+      <SuspenseOrNotReady fallback={<Loading/>}>
+        <PokemonList></PokemonList>
+      </SuspenseOrNotReady>
+    </Container>
   )
 }
 
-export default Home
+export default Pokemons

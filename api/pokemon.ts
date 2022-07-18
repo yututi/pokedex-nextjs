@@ -1,24 +1,27 @@
 import useSWR from 'swr'
 import fetcher from "@/utils/fetcher"
 import { PokeAPI } from "pokeapi-types";
-import { useState } from 'react';
 
-const DEFAULT_KEY = "https://pokeapi.co/api/v2/pokemon?limit=10"
+const DEFAULT_PAGE_SIZE = 10
 
-export const usePokemons = () => {
-  const [url, setUrl] = useState(DEFAULT_KEY)
-  const {data} = useSWR<PokeAPI.NamedAPIResourceList>(url, fetcher, { suspense: true })
+export const usePokemons = (page:number) => {
+  const param = new URLSearchParams({
+    offset: `${(page - 1) * DEFAULT_PAGE_SIZE}`,
+    limit: `${DEFAULT_PAGE_SIZE}`
+  })
+  try {
+    const {data} = useSWR<PokeAPI.NamedAPIResourceList>("https://pokeapi.co/api/v2/pokemon?" + param.toString(), fetcher, { suspense: true })
 
-  return {
-    results: data?.results,
-    count: data?.count,
-    nextPage: () => {
-      data?.next && setUrl(data?.next)
-    },
-    prevPage: () => {
-      data?.previous && setUrl(data?.previous)
+    return {
+      results: data!.results,
+      count: data!.count,
+      pageSize: DEFAULT_PAGE_SIZE
     }
+  } catch (e) {
+    console.log(e)
+    throw e
   }
+
 }
 
 export const usePokemonByName = (name:string) => {

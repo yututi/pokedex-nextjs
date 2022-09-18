@@ -10,66 +10,10 @@ import {
 import React, { useRef, useState } from "react"
 import { useMemo } from "react"
 
-export const CarouselWrapper = styled.div`
-  padding: 6px;
-  position: relative;
-  width: 100%;
-`
-
-const CarouselSliderOuter = styled.div`
-  position: relative;
-  overflow-x: hidden;
-  contain: contain;
-  display: flex;
-`
-
-type CarouselInnserProps = {
-  left: number
-}
-
-const CarouselInner = styled.div<CarouselInnserProps>`
-  transform: translateX(${props => props.left}px);
-  transition: transform 0.5s;
-  height: 100%;
-  display: flex;
-  position: relative;
-  white-space: nowrap;
-`
-
-type CarouselArrowProps = {
-  isLeft?: boolean
-}
-
-export const CarouselArrow = styled.div<CarouselArrowProps>`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 12px 12px;
-  font-size: 32px;
-  cursor: pointer;
-  z-index: 1;
-  box-shadow: ${defaultShadow};
-  left: ${props => props.isLeft ? "0px" : "initial"};
-  right: ${props => !props.isLeft ? "0px" : "initial"};
-  background-color: white;
-`
-
 type CarouselItem = {
   id: string,
   img: string,
   label: string
-}
-
-const CarouselCard: React.FC<CarouselItem> = ({ img, label }) => {
-
-  return (
-    <Card>
-      <CardImg src={img} alt={label}></CardImg>
-      <CardText>
-        {label}
-      </CardText>
-    </Card>
-  )
 }
 
 type CarouselProps = {
@@ -105,9 +49,9 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
     <CarouselWrapper ref={wrapperRef}>
       <CarouselArrow isLeft onClick={next}>{"<"}</CarouselArrow>
       <CarouselSliderOuter>
-        <CarouselInner left={left}>
+        <CarouselSliderInner left={left}>
           {memorizedItems}
-        </CarouselInner>
+        </CarouselSliderInner>
       </CarouselSliderOuter>
       <CarouselArrow onClick={prev}>{">"}</CarouselArrow>
     </CarouselWrapper>
@@ -115,3 +59,58 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
 }
 
 export default Carousel
+
+const CarouselCard: React.FC<CarouselItem> = ({ img, label }) => {
+  return (
+    <Card>
+      <CardImg src={img} alt={label}></CardImg>
+      <CardText>
+        {label}
+      </CardText>
+    </Card>
+  )
+}
+
+const CarouselWrapper = styled.div`
+  padding: 6px;
+  position: relative;
+  width: 100%;
+`
+
+const CarouselSliderOuter = styled.div`
+  position: relative;
+  overflow-x: hidden;
+  contain: content;
+  display: flex;
+`
+
+type CarouselSliderInnserProps = {
+  left: number
+}
+
+const CarouselSliderInner = styled.div<CarouselSliderInnserProps>`
+  transform: translateX(${props => props.left}px);
+  transition: transform 0.5s;
+  height: 100%;
+  display: flex;
+  position: relative;
+  white-space: nowrap;
+`
+
+type CarouselArrowProps = {
+  isLeft?: boolean
+}
+
+export const CarouselArrow = styled.div<CarouselArrowProps>`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 12px 12px;
+  font-size: 32px;
+  cursor: pointer;
+  z-index: 1;
+  box-shadow: ${defaultShadow};
+  left: ${props => props.isLeft ? "0px" : "initial"};
+  right: ${props => !props.isLeft ? "0px" : "initial"};
+  background-color: white;
+`

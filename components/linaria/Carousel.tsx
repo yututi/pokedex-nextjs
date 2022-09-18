@@ -13,7 +13,7 @@ import { useMemo } from "react"
 export const CarouselWrapper = styled.div`
   padding: 6px;
   position: relative;
-  max-width: 100%;
+  width: 100%;
 `
 
 const CarouselSliderOuter = styled.div`
@@ -49,8 +49,8 @@ export const CarouselArrow = styled.div<CarouselArrowProps>`
   cursor: pointer;
   z-index: 1;
   box-shadow: ${defaultShadow};
-  left: ${props => props.isLeft ? "0px;" : "initial"};
-  right: ${props => !props.isLeft ? "0px;" : "initial"};
+  left: ${props => props.isLeft ? "0px" : "initial"};
+  right: ${props => !props.isLeft ? "0px" : "initial"};
   background-color: white;
 `
 

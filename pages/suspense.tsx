@@ -2,7 +2,6 @@ import type { NextPage } from 'next'
 import SuspenseOrNotReady from '@/components/SuspenseOrNotReady'
 import PokemonList, {Loading} from "@/components/PokemonList"
 import Container from '@mui/material/Container'
-import { memo } from 'react'
 
 const Pokemons: NextPage = () => {
   return (
@@ -14,4 +13,4 @@ const Pokemons: NextPage = () => {
   )
 }
 
-export default memo(Pokemons)
+export default Pokemons

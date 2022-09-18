@@ -1,16 +1,15 @@
 import { usePokemonByName } from "@/api/pokemon"
 
 import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Avatar from '@mui/material/Avatar';
 
 import Skeleton from '@mui/material/Skeleton';
 import Divider from "@mui/material/Divider";
+import { useRouter } from "next/router";
 
 type Props = {
   name: string
@@ -19,9 +18,13 @@ type Props = {
 const Pokemon : React.FC<Props> = ({name}) => {
 
   const pokemon = usePokemonByName(name)
+  const router = useRouter()
 
   return (
     <Card sx={{ minWidth: 230 }}>
+      <CardActions>
+        <Button onClick={() => router.back()} size="small">Back</Button>
+      </CardActions>
       <CardMedia
         component="img"
         height="300"
@@ -71,9 +74,6 @@ const Pokemon : React.FC<Props> = ({name}) => {
           weight: {pokemon.weight} kg
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
     </Card>
   );
 

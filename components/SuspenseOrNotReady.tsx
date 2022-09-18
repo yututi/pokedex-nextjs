@@ -9,17 +9,15 @@ type Props = {
 
 const SuspenseOrNotReady:React.FC<Props> = ({fallback, children}) => {
 
+  console.log("rerender")
+
   const router = useRouter()
 
-  if (router.isReady) {
-    return (
-      <Suspense fallback={fallback}>
-        {children}
-      </Suspense>
-    )
-  }
-
-  return (<>{fallback}</>)
+  return (
+    <Suspense fallback={fallback}>
+      {router.isReady ? children : fallback}
+    </Suspense>
+  )
 }
 
 export default SuspenseOrNotReady

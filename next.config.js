@@ -1,4 +1,5 @@
 const path = require("path")
+const withLinaria = require('next-linaria');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -11,4 +12,4 @@ const nextConfig = {
     concurrentFeatures: true,
   },
 }
-module.exports = nextConfig
+module.exports = withLinaria(nextConfig)

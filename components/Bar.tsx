@@ -16,7 +16,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 import Nav from "./Nav"
 
-const Bar : React.FC = memo(() => {
+const Bar : React.FC = () => {
 
   const setOpen = useSetRecoilState(isOpenNav)
 
@@ -42,6 +42,6 @@ const Bar : React.FC = memo(() => {
       <Nav></Nav>
     </>
   );
-})
+}
 
 export default memo(Bar)

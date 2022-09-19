@@ -43,7 +43,7 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
         ))}
       </>
     )
-  }, items.map(item => item.id))
+  }, [items])
 
   return (
     <CarouselWrapper ref={wrapperRef}>

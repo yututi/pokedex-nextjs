@@ -41,7 +41,7 @@ type LinkProps = {
   linkTo: string
 }
 
-const LinkBtn : React.FC<LinkProps> = memo(({label, linkTo}) => {
+const LinkBtn : React.FC<LinkProps> = ({label, linkTo}) => {
   const router = useRouter()
 
   return (
@@ -53,6 +53,6 @@ const LinkBtn : React.FC<LinkProps> = memo(({label, linkTo}) => {
       </ListItemButton>
     </ListItem>
   )
-})
+}
 
 export default Nav

@@ -81,9 +81,13 @@ const Pokemon : React.FC<Props> = ({name}) => {
 }
 
 export const Loading :React.FC = () => {
+  const router = useRouter()
   
   return (
     <Card sx={{ minWidth: 230 }}>
+    <CardActions>
+      <Button onClick={() => router.back()} size="small">Back</Button>
+    </CardActions>
       <Skeleton sx={{ height: 300 }} itemType="rectangular" animation="wave" />
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -128,9 +132,6 @@ export const Loading :React.FC = () => {
           <Skeleton itemType="text" width={50}/>
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
     </Card>
   );
 }

@@ -60,11 +60,21 @@ type CarouselItem = {
   label: string
 }
 
+const CARD_SIZE = {
+  H:"200px",
+  W:"150px"
+} as const
+
 const CarouselCard: React.FC<CarouselItem> = ({ img, label }) => {
 
   return (
     <Card>
-      <CardImg src={img} alt={label}></CardImg>
+      <CardImg 
+        src={img} 
+        alt={label}
+        height={CARD_SIZE.H}
+        width={CARD_SIZE.W}
+      />
       <CardText>
         {label}
       </CardText>

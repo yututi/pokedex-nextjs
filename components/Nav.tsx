@@ -10,12 +10,10 @@ import {
 } from "@/recoil/global"
 
 import Drawer from '@mui/material/Drawer';
-import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import { memo } from 'react';
 
 const Nav = ()=> {
 
@@ -31,6 +29,7 @@ const Nav = ()=> {
         <LinkBtn label="Top" linkTo="/"/>
         <LinkBtn label="Pokemons" linkTo="/pokemons"/>
         <LinkBtn label="LinariaSample" linkTo="/linaria"/>
+        <LinkBtn label="Berries" linkTo="/berries/1"/>
       </List>
     </Drawer>
   )

@@ -11,5 +11,13 @@ const nextConfig = {
   experimental: {
     concurrentFeatures: true,
   },
+  async rewrites () {
+    return [
+      {
+        source: "/api/pokedex/:path*",
+        destination: "https://pokeapi.co/api/v2/:path*"
+      }
+    ]
+  },  
 }
 module.exports = withLinaria(nextConfig)

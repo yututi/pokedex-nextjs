@@ -19,6 +19,7 @@ export const _CardImg = styled.img<ImageProps>`
   width: ${prop => prop.width};
   height: ${prop => prop.height};
   object-fit: cover;
+  background-color: gainsboro;
 `
 
 export const CardImg:React.FC<ImageProps> = (props) => {
@@ -31,8 +32,8 @@ export const CardImg:React.FC<ImageProps> = (props) => {
 
   return (
     <>
-      <_CardImg {...props} onLoad={onLoad}></_CardImg>
-      {!loaded && <EmptyCardImg {...props}/>}
+      <_CardImg {...props} onLoad={onLoad} loading="lazy"></_CardImg>
+      {/* {!loaded && <EmptyCardImg {...props}/>} */}
     </>
   )
 }

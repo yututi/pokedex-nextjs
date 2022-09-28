@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 
 import {
   useSetRecoilState
@@ -15,10 +15,31 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
 import Nav from "./Nav"
+import { Fade, LinearProgress } from '@mui/material';
+import { useRouter } from 'next/router';
 
 const Bar : React.FC = () => {
 
   const setOpen = useSetRecoilState(isOpenNav)
+
+  const router = useRouter()
+
+  const [loading, setLoading] = useState(false)
+
+  useEffect(()=> {
+    const start = () => {
+      setLoading(true)
+    }
+    const end = () => {
+      setLoading(false)
+    }
+    router.events.on('routeChangeStart', start)
+    router.events.on('routeChangeComplete', end)
+    return () => {
+      router.events.off('routeChangeStart', start)
+      router.events.off('routeChangeComplete', end)
+    }
+  })
 
   return (
     <>
@@ -39,6 +60,9 @@ const Bar : React.FC = () => {
           </Typography>
         </Toolbar>
       </AppBar>
+      <Fade in={loading}>
+        <LinearProgress  color="secondary" />
+      </Fade>
       <Nav></Nav>
     </>
   );

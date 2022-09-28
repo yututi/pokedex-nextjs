@@ -40,7 +40,7 @@ export const useBerries = (page:number) : Fetching | Result => {
 
 export const useBerryByName = (name:string) => {
 
-  const { data } = useSWR<PokeAPI.Pokemon>(`/api/pokedex/berry/${name}`, fetcher, { suspense: true })
+  const { data } = useSWR<PokeAPI.Berry>(`/api/pokedex/berry/${name}`, fetcher, { suspense: true })
 
   return data!
 }

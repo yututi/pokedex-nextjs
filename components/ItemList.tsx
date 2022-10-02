@@ -5,9 +5,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Pagination from '@mui/material/Pagination';
 import Skeleton from '@mui/material/Skeleton';
 import { Stack } from '@mui/material';
-import { useRef } from 'react';
 import Link from 'next/link'
-
 
 type Props = {
   itemList: Item[]
@@ -36,11 +34,13 @@ const ItemList = ({
       <List>
         {itemList.map(item => (
           <ListItem key={item.name} style={{width: "100%"}}>
-            <ListItemButton LinkComponent={Link} href={`/${itemPath}/${item.name}`}>
-              <ListItemText>
-                {item.name}
-              </ListItemText>
-            </ListItemButton>
+            <Link href={`/${itemPath}/${item.name}`} passHref>
+              <ListItemButton>
+                <ListItemText>
+                  {item.name}
+                </ListItemText>
+              </ListItemButton>
+            </Link>
           </ListItem>
         ))}
       </List>

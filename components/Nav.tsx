@@ -28,8 +28,9 @@ const Nav = ()=> {
       <List>
         <LinkBtn label="Top" linkTo="/"/>
         <LinkBtn label="Pokemons" linkTo="/pokemons"/>
-        <LinkBtn label="LinariaSample" linkTo="/linaria"/>
         <LinkBtn label="Berries" linkTo="/berries/1"/>
+        <LinkBtn label="Items" linkTo="/items/1"/>
+        <LinkBtn label="LinariaSample" linkTo="/linaria"/>
       </List>
     </Drawer>
   )

@@ -5,10 +5,12 @@ import { PokeAPI } from "pokeapi-types";
 import Container from '@mui/material/Container'
 import fetch from "node-fetch"
 import BerryList from '@/components/BerryList';
+import { Alert } from '@mui/material';
 
 const Berries: NextPage<ServerSideProps> = ({fallback = {}}) => {
   return (
     <Container maxWidth="sm" sx={{ mt: 4, mb: 4 }}>
+      <Alert sx={{mb:2}} severity="info">このページはISRを使っています。1,2ページ目が作成済みで、それ以降は動的に作成します。</Alert>
       <SWRConfig value={{fallback}}>
         <BerryList></BerryList>
       </SWRConfig>

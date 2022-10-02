@@ -1,21 +1,26 @@
 import type { NextPage } from 'next'
-import styles from '../styles/Home.module.css'
-import dynamic from 'next/dynamic'
-import { Suspense } from 'react'
-import { useRouter } from 'next/router'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import Link from 'next/link'
-const PokemonList = dynamic(() => import("@/components/PokemonList"), { suspense: true })
 
 const Home: NextPage = () => {
 
   return (
     <Container maxWidth="sm" sx={{ mt: 4, mb: 4 }}>
       <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-        This is a Pokedex App using Next.js.
+        Poke APIを使ってSSG/SSR/ISRを試すアプリです。すべてのPoke APIへのリクエストに3秒かかるようになっています。
       </Typography>
-      <Link href={"/pokemons"}>Pokemons</Link>
+      <ul>
+        <li>
+          <Link href={"/pokemons"}>Pokemons(SSG+CSR+SWR)</Link>
+        </li>
+        <li>
+          <Link href={"/berries/1"}>Berries(ISR)</Link>
+        </li>
+        <li>
+          <Link href={"/items/1"}>Items(SSR)</Link>
+        </li>
+      </ul>
     </Container>
   )
 }

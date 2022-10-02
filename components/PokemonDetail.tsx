@@ -30,6 +30,7 @@ const Pokemon : React.FC<Props> = ({name}) => {
         height="300"
         image={pokemon.sprites.front_default}
         alt={pokemon.name}
+        sx={{objectFit:"none"}}
       />
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>

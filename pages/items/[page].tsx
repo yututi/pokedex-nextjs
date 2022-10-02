@@ -1,15 +1,13 @@
 import type { NextPage, GetServerSideProps } from 'next'
-import { memo, useRef } from 'react'
-import { SWRConfig } from "swr"
+import { memo } from 'react'
 import { PokeAPI } from "pokeapi-types";
 import Container from '@mui/material/Container'
 import fetch from "node-fetch"
-import BerryList from '@/components/BerryList';
 import { Alert, Pagination, Stack } from '@mui/material';
 import ItemList from '@/components/ItemList';
 import { useRouter } from 'next/router';
 
-const Berries: NextPage<ServerSideProps> = ({itemList}) => {
+const Items: NextPage<ServerSideProps> = ({itemList}) => {
 
   const router = useRouter()
 
@@ -55,4 +53,4 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
   }
 }
 
-export default memo(Berries)
+export default memo(Items)

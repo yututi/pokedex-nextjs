@@ -1,7 +1,5 @@
 import { useRouter } from 'next/router'
 
-import BerryDetail, {Loading} from "@/components/BerryDetail"
-import SuspenseOrNotReady from '@/components/SuspenseOrNotReady'
 import Container from '@mui/material/Container'
 import { PokeAPI } from 'pokeapi-types'
 import { GetServerSideProps } from 'next'

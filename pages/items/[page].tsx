@@ -19,7 +19,7 @@ const Berries: NextPage<ServerSideProps> = ({itemList}) => {
     <Container maxWidth="sm" sx={{ mt: 4, mb: 4 }}>
       <Alert sx={{mb:2}} severity="info">このページはSSRを使っています。</Alert>
       <Stack alignItems={"center"}>
-        <Pagination count={itemList.count} page={page} onChange={(e, newPage) => router.push({pathname: `/items/${newPage}`})}></Pagination>
+        <Pagination count={Math.ceil(itemList.count / DEFAULT_PAGE_SIZE)} page={page} onChange={(e, newPage) => router.push({pathname: `/items/${newPage}`})}></Pagination>
         <ItemList isLoading={false} itemList={itemList.results} itemPath="items/detail"></ItemList>
       </Stack>
     </Container>
